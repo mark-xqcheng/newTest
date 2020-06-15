@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+    <div id="app">
+      <h2>{{ parent.name }} -- {{ parent.age }}</h2>
+      <h3>{{ parent.fav }}</h3>
+      <div>
+        <ul>
+          <li>1</li>
+          <li>2</li>
+          <li>3</li>
+        </ul>
+      </div>
+      <h3>{{ msg }}</h3>
+      <div v-text="msg"></div>
+      <div v-text="parent.fav"></div>
+      <div v-html = "htmlStr"></div>
+      <input type="text" v-model="msg">
+      <button v-on:click="handlerClick">学习MVVM原理</button>
+      <button @click="handlerClick">学习MVVM原理</button>
+
+    </div>
+    <script src="./observer.js"></script>
+    <script src="./MyVue.js"></script>
+    <script>
+      let vm = new MyVue({
+        el: '#app',
+        data: {
+          parent: {
+            name: 'mark',
+            age: 18,
+            fav: '姑娘'
+          },
+          msg: '学习vue源码内容',
+          htmlStr: '<h3>学的怎么样</h3>'
+        },
+        methods: {
+          handlerClick () {
+            console.log(this, 'this')
+          }
+        }
+      })
+    </script>
+</body>
+</html>
